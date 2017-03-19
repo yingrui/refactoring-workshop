@@ -15,7 +15,16 @@ public class Movie {
     }
 
     private void setPriceCode(int arg) {
-        _priceCode = new Price(arg);
+        switch (arg) {
+            case CHILDREN:
+                _priceCode = new ChildrenPrice();
+                break;
+            case REGULAR:
+                _priceCode = new RegularPrice();
+                break;
+            case NEW_RELEASE:
+                _priceCode = new NewReleasePrice();
+        }
     }
 
     public String getTitle() {
@@ -27,9 +36,7 @@ public class Movie {
     }
 
     int getFrequentRenterPoints(int daysRented) {
-        int points = 1;
-        if ((_priceCode.getPriceCode() == NEW_RELEASE) && (daysRented > 1))
-            points++;
-        return points;
+        return _priceCode.getFrequentRenterPoints(daysRented);
     }
+
 }
