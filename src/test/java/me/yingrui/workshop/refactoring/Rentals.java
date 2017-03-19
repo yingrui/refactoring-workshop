@@ -18,7 +18,7 @@ public class Rentals {
     }
 
     public static Rental children(int daysRented) {
-        return getRental(daysRented, Movie.CHILDRENS);
+        return getRental(daysRented, Movie.CHILDREN);
     }
 
     private static Rental getRental(int daysRented, int priceCode) {
