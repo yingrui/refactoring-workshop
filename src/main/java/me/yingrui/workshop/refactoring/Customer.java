@@ -53,4 +53,7 @@ public class Customer {
         return totalAmount;
     }
 
+    public String htmlStatement() {
+        return null;
+    }
 }
