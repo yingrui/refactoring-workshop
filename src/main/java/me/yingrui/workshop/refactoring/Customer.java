@@ -33,6 +33,19 @@ public class Customer {
         return result;
     }
 
+    public String htmlStatement() {
+        String result = "<h1>Rental Record for " + getName() + "</h1>\n<ul>";
+        Enumeration<Rental> rentals = _rentals.elements();
+        while (rentals.hasMoreElements()) {
+            Rental each = rentals.nextElement();
+            result += "\t<li><span class='movie'>" + each.getMovie().getTitle() + "</span><strong>" + String.valueOf(each.getCharge()) + "</strong></li>\n";
+        }
+
+        result += "</ul><h2>Amount owed is <strong>" + String.valueOf(getTotalCharge()) + "</strong></h2>\n";
+        result += "<h2>You earned <font color='red'>" + String.valueOf(getFrequentRenterPoints()) + "</font> frequent renter points</h2>";
+        return result;
+    }
+
     private int getFrequentRenterPoints() {
         Enumeration<Rental> rentals = _rentals.elements();
         int frequentRenterPoints = 0;
@@ -51,9 +64,5 @@ public class Customer {
             totalAmount += each.getCharge();
         }
         return totalAmount;
-    }
-
-    public String htmlStatement() {
-        return null;
     }
 }
